@@ -1,0 +1,27 @@
+# Nova
+.nova
+
+# Xcode
+xcuserdata/
+
+# macOS
+.DS_Store
+
+# Swift
+.build
+.swiftpm
+Package.resolved
+
+# Vapor
+Packages
+.build
+xcuserdata
+*.xcodeproj
+DerivedData/
+.DS_Store
+db.sqlite
+.swiftpm
+.env
+.env.*
+! .env.example
+.vscode
