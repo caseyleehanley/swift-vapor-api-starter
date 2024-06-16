@@ -4,13 +4,13 @@ A starter template for a Swift Vapor application that serves a REST API and allo
 
 ## Table of Contents
 
-[I. Introduction](#introduction)\
-[II. Command Reference](#command-reference)\
-[III. Tutorial](#tutorial)\
-[IV. Key Concepts](#key-concepts)\
-[V. Testing](#testing)\
-[VI. Troubleshooting](#troubleshooting)\
-[VII. FAQs](#faqs)
+[I. Introduction](#i-introduction)\
+[II. Command Reference](#ii-command-reference)\
+[III. Tutorial](#iii-tutorial)\
+[IV. Key Concepts](#iv-key-concepts)\
+[V. Testing](#v-testing)\
+[VI. Troubleshooting](#vi-troubleshooting)\
+[VII. FAQs](#vii-faqs)
 
 ## Dependencies
 
