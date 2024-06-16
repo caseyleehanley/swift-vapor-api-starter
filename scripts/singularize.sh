@@ -7,7 +7,9 @@
 
 input="$1"
 
-if [[ "$input" =~ .*ies$ ]]; then
+if [[ "$input" =~ .*vies$ ]]; then
+  input="${input%vies}vie" # e.g., movies -> movie
+elif [[ "$input" =~ .*ies$ ]]; then
   input="${input%ies}y" # e.g., butterflies -> butterfly
 elif [[ "$input" =~ .*oes$ ]]; then
   input="${input%oes}o" # e.g., potatoes -> potato
