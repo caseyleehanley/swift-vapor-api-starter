@@ -1,3 +1,7 @@
+@testable import App
+import XCTVapor
+import Testing
+
 @Suite("<#Entity#>: DTOs")
 final class <#Entity#>DTOTests: AppTest {
     @Test("Create -> toModel()")
