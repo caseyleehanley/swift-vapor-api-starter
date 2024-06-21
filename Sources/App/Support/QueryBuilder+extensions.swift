@@ -12,11 +12,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(.init(stringLiteral: key.name), key.filter.method, value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(key.name) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(key.name) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key)
                     }
                 }
             }
@@ -26,11 +22,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(.init(stringLiteral: key.name), key.filter.method, value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(key.name) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(key.name) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key)
                     }
                 }
             }
@@ -40,11 +32,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(.init(stringLiteral: key.name), key.filter.method, value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(key.name) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(key.name) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key)
                     }
                 }
             }
@@ -52,11 +40,7 @@ extension QueryBuilder where Model: Queryable {
             if let value {
                 self.filter(.init(stringLiteral: key.name), key.filter.method, value)
             } else {
-                switch key.filter {
-                case .eq: self.filter(.sql(unsafeRaw: "\(key.name) IS NULL"))
-                case .notEq: self.filter(.sql(unsafeRaw: "\(key.name) IS NOT NULL"))
-                default: break
-                }
+                self.filterNil(using: key)
             }
         case .uuid(let values):
             self.group(key.filter == .notEq ? .and : .or) { group in
@@ -64,11 +48,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(.init(stringLiteral: key.name), key.filter.method, value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(key.name) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(key.name) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key)
                     }
                 }
             }
@@ -76,11 +56,7 @@ extension QueryBuilder where Model: Queryable {
             if let value {
                 self.filter(.init(stringLiteral: key.name), key.filter.method, value)
             } else {
-                switch key.filter {
-                case .eq: self.filter(.sql(unsafeRaw: "\(key.name) IS NULL"))
-                case .notEq: self.filter(.sql(unsafeRaw: "\(key.name) IS NOT NULL"))
-                default: break
-                }
+                self.filterNil(using: key)
             }
         }
         return self
@@ -100,11 +76,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(joined, field, key.filter.method, value as! Field.Value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(keyName) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(keyName) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key, named: keyName)
                     }
                 }
             }
@@ -114,11 +86,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(joined, field, key.filter.method, value as! Field.Value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(keyName) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(keyName) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key, named: keyName)
                     }
                 }
             }
@@ -128,11 +96,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(joined, field, key.filter.method, value as! Field.Value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(keyName) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(keyName) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key, named: keyName)
                     }
                 }
             }
@@ -140,11 +104,7 @@ extension QueryBuilder where Model: Queryable {
             if let value {
                 self.filter(joined, field, key.filter.method, value as! Field.Value)
             } else {
-                switch key.filter {
-                case .eq: self.filter(.sql(unsafeRaw: "\(keyName) IS NULL"))
-                case .notEq: self.filter(.sql(unsafeRaw: "\(keyName) IS NOT NULL"))
-                default: break
-                }
+                self.filterNil(using: key, named: keyName)
             }
         case .uuid(let values):
             self.group(key.filter == .notEq ? .and : .or) { group in
@@ -152,11 +112,7 @@ extension QueryBuilder where Model: Queryable {
                     if let value {
                         group.filter(joined, field, key.filter.method, value as! Field.Value)
                     } else {
-                        switch key.filter {
-                        case .eq: group.filter(.sql(unsafeRaw: "\(keyName) IS NULL"))
-                        case .notEq: group.filter(.sql(unsafeRaw: "\(keyName) IS NOT NULL"))
-                        default: continue
-                        }
+                        group.filterNil(using: key, named: keyName)
                     }
                 }
             }
@@ -164,11 +120,7 @@ extension QueryBuilder where Model: Queryable {
             if let value {
                 self.filter(joined, field, key.filter.method, value as! Field.Value)
             } else {
-                switch key.filter {
-                case .eq: self.filter(.sql(unsafeRaw: "\(keyName) IS NULL"))
-                case .notEq: self.filter(.sql(unsafeRaw: "\(keyName) IS NOT NULL"))
-                default: break
-                }
+                self.filterNil(using: key, named: keyName)
             }
         }
         return self
@@ -179,6 +131,19 @@ extension QueryBuilder where Model: Queryable {
         by key: QuerySortKey<Model>
     ) -> Self {
         self.sort(.init(stringLiteral: key.name), key.direction)
+        return self
+    }
+    
+    @discardableResult
+    private func filterNil(
+        using key: QueryFilterKey<Model>,
+        named name: String? = nil
+    ) -> Self {
+        switch key.filter {
+        case .eq: self.filter(.sql(unsafeRaw: "\(name ?? key.name) IS NULL"))
+        case .notEq: self.filter(.sql(unsafeRaw: "\(name ?? key.name) IS NOT NULL"))
+        default: break
+        }
         return self
     }
 }
